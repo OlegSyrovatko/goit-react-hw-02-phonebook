@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import ContactList from 'components/ContactList';
+import Filter from 'components/Filter';
 
 export class App extends Component {
   state = {
@@ -41,8 +42,8 @@ export class App extends Component {
   onDeleteContact = () => {};
 
   render() {
+    const { filter } = this.state;
     const visibleContacts = this.filterContacts();
-
     return (
       <>
         <form onSubmit={this.addContact}>
@@ -67,13 +68,7 @@ export class App extends Component {
         {this.state.contacts.length > 0 && (
           <>
             <h2>Contacts</h2>
-            Find contacts by name
-            <input
-              type="text"
-              name="filter"
-              value={this.state.filter}
-              onChange={this.handleChange}
-            ></input>
+            <Filter value={filter} onChange={this.handleChange} />
           </>
         )}
         <ContactList
