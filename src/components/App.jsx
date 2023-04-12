@@ -5,6 +5,7 @@ import ContactList from 'components/ContactList';
 export class App extends Component {
   state = {
     contacts: [],
+    filter: '',
     name: '',
     number: '',
   };
@@ -53,7 +54,18 @@ export class App extends Component {
           ></input>
           <button type="submit"> Add contact</button>
         </form>
-        {this.state.contacts.length > 0 && <h2>Contacts</h2>}
+        {this.state.contacts.length > 0 && (
+          <>
+            <h2>Contacts</h2>
+            Find contacts by name
+            <input
+              type="text"
+              name="filter"
+              value={this.state.filter}
+              onChange={this.handleChange}
+            ></input>
+          </>
+        )}
         <ContactList
           contacts={this.state.contacts}
           onDelete={this.onDeleteContact}
