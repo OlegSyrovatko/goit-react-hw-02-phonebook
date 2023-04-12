@@ -30,9 +30,19 @@ export class App extends Component {
     const { name, value } = e.currentTarget;
     this.setState({ [name]: value });
   };
+
+  filterContacts = () => {
+    const { filter, contacts } = this.state;
+    const lowerFilter = filter.toLowerCase();
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(lowerFilter)
+    );
+  };
   onDeleteContact = () => {};
 
   render() {
+    const visibleContacts = this.filterContacts();
+
     return (
       <>
         <form onSubmit={this.addContact}>
@@ -67,7 +77,7 @@ export class App extends Component {
           </>
         )}
         <ContactList
-          contacts={this.state.contacts}
+          contacts={visibleContacts}
           onDelete={this.onDeleteContact}
         />
       </>
