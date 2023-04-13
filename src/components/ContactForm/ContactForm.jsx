@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, Label } from './ContactForm.styled';
 
-const initialValues = {
-  name: '',
-  number: '',
-};
-
 class ContactForm extends Component {
   state = {
     name: this.props.name || '',
