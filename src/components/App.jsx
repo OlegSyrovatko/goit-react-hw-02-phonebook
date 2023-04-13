@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import ContactList from 'components/ContactList';
 import Filter from 'components/Filter';
 import ContactForm from 'components/ContactForm';
+import { Book } from './App.styled';
 
 export class App extends Component {
   state = {
@@ -39,13 +40,17 @@ export class App extends Component {
       contact.name.toLowerCase().includes(lowerFilter)
     );
   };
-  onDeleteContact = () => {};
+  onDeleteContact = id => {
+    this.setState({
+      contacts: this.state.contacts.filter(contact => contact.id !== id),
+    });
+  };
 
   render() {
     const { filter } = this.state;
     const visibleContacts = this.filterContacts();
     return (
-      <>
+      <Book>
         <ContactForm onSubmit={this.addContact} />
         {this.state.contacts.length > 0 && (
           <>
@@ -55,9 +60,9 @@ export class App extends Component {
         )}
         <ContactList
           contacts={visibleContacts}
-          onDelete={this.onDeleteContact}
+          onDeleteContact={this.onDeleteContact}
         />
-      </>
+      </Book>
     );
   }
 }

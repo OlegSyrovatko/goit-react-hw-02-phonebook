@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import { Button, Form, Label } from './ContactForm.styled';
+
+const initialValues = {
+  name: '',
+  number: '',
+};
 
 class ContactForm extends Component {
   state = {
@@ -21,32 +27,35 @@ class ContactForm extends Component {
   render() {
     const { name, number } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={this.handleChange}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Number:
-          <input
-            type="tel"
-            name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            value={number}
-            onChange={this.handleChange}
-            required
-          />
-        </label>
-        <br />
-        <button type="submit">Add Contact</button>
-      </form>
+      <>
+        <h1>Phonebook</h1>
+        <Form onSubmit={this.handleSubmit}>
+          <Label htmlFor="name">
+            <p>Name:</p>
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={this.handleChange}
+              required
+            />
+          </Label>
+          <br />
+          <Label htmlFor="number">
+            <p>Number:</p>
+            <input
+              type="tel"
+              name="number"
+              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+              value={number}
+              onChange={this.handleChange}
+              required
+            />
+          </Label>
+          <br />
+          <Button type="submit">Add Contact</Button>
+        </Form>
+      </>
     );
   }
 }

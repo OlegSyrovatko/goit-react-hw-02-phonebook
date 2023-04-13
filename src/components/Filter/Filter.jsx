@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Find } from './Filter.styled';
 
 class Filter extends Component {
   state = {
@@ -14,15 +15,15 @@ class Filter extends Component {
   render() {
     const { filter } = this.state;
     return (
-      <>
-        Find contacts by name
+      <Find>
+        <p>Find contacts by name</p>
         <input
           type="text"
           name="filter"
           value={filter}
           onChange={this.handleChange}
         />
-      </>
+      </Find>
     );
   }
 }

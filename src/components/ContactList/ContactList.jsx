@@ -1,21 +1,19 @@
 import React from 'react';
 
+import { Ul, Li, P, Button } from './ContactList.styled';
+
 const ContactList = ({ contacts, onDeleteContact }) => (
-  <ul>
+  <Ul>
     {contacts.map(({ id, name, number }) => (
-      <li key={id}>
-        {name}
-        {number}
-      </li>
+      <Li key={id}>
+        <P>{name}</P>
+        <P>{number}</P>
+        <Button type="button" onClick={() => onDeleteContact(id)}>
+          Delete
+        </Button>
+      </Li>
     ))}
-  </ul>
+  </Ul>
 );
 
 export default ContactList;
-
-//   <Button
-//     key={option}
-//     type="button"
-//     onClick={() => onLeaveFeedback(option)}
-//     >
-//     </Button>
