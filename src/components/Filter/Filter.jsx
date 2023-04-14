@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Find } from './Filter.styled';
 
 class Filter extends Component {
@@ -29,3 +30,7 @@ class Filter extends Component {
 }
 
 export default Filter;
+
+Filter.propTypes = {
+  value: PropTypes.string.isRequired,
+};
